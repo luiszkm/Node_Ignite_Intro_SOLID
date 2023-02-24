@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { v4 as uuidV4 } from "uuid";
 
 class User {
   id: string;
@@ -15,7 +15,7 @@ class User {
 
   constructor() {
     if (!this.id) {
-      this.id = randomUUID();
+      this.id = uuidV4();
       this.admin = false;
     }
   }
