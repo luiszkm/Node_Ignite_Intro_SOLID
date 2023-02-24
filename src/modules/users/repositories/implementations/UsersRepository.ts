@@ -28,7 +28,6 @@ class UsersRepository implements IUsersRepository {
     });
     this.users.push(user);
 
-
     return user;
   }
 
@@ -43,19 +42,20 @@ class UsersRepository implements IUsersRepository {
 
   findByEmail(email: string): User | undefined {
     const user = this.users.find((user) => user.email === email);
-   
+
     return user!;
   }
 
   turnAdmin(receivedUser: User): User {
-    receivedUser.admin = true
+    receivedUser.admin = true;
+    receivedUser.updated_at = new Date();
     return receivedUser;
   }
 
   list(): User[] {
     const allUsers = this.users;
 
-    return allUsers!
+    return allUsers!;
   }
 }
 
