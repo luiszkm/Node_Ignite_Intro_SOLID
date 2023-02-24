@@ -15,7 +15,7 @@ class User {
 
   constructor() {
     if (!this.id) {
-      this.id = randomUUID();
+      this.id = "1"; // randomUUID();
       this.admin = false;
     }
   }

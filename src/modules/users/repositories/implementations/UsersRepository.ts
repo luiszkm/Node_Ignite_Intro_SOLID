@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { User } from "../../model/User";
 import { IUsersRepository, ICreateUserDTO } from "../IUsersRepository";
 
@@ -27,26 +28,33 @@ class UsersRepository implements IUsersRepository {
     });
     this.users.push(user);
 
-    console.log(this.users);
-    
+
     return user;
   }
 
   findById(id: string): User | undefined {
-    // Complete aqui
+    const user = this.users.find((user) => user.id === id);
+
+    if (!user) {
+      throw new Error("user id not found");
+    }
+    return user!;
   }
 
   findByEmail(email: string): User | undefined {
-     const user = this.users.find(user => user.email === email);
-     return user!
+    const user = this.users.find((user) => user.email === email);
+    return user!;
   }
 
   turnAdmin(receivedUser: User): User {
-    // Complete aqui
+    receivedUser.admin = true
+    return receivedUser;
   }
 
   list(): User[] {
-    // Complete aqui
+    const allUsers = this.users;
+
+    return allUsers!
   }
 }
 
